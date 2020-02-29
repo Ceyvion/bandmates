@@ -1,8 +1,8 @@
 <center><h3>Let's get started. </h3></center>
 
 <ul>
-<% @user.each do |user| %>
-<li><a href="/user/<%=user.id%>"><%=user.username%></a></li>
+<% @users.each do |user| %>
+ <li><a href="/users/<%=user.id%>"><%=user.username%></a></li>
 <% end %>
 </ul>
 

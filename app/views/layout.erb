@@ -13,9 +13,7 @@
 
 
         <% if is_logged_in? %>
-        <form class="" action="/logout" method="GET">
-        <center><input type= "submit" name="_method" value="Log Out"></center>
-        </form>
+      <p><a href="/logout">Log Out</a></p>
         <% else %>
         <center><p><a href='/signup'>Sign Up </a></p></center>
         <center><p><a href='/login'>Log In </a></p></center>

@@ -1,7 +1,5 @@
 require './config/environment'
 
-
-
 class ApplicationController < Sinatra::Base
 
 #this is to enable sessions
@@ -20,6 +18,13 @@ class ApplicationController < Sinatra::Base
     erb :'welcome'
   end
 
+  # get '/logout' do
+  #   if is_logged_in?
+  #     session.clear
+  #       # flash[:message] = "You have been logged out of your account."
+  #       redirect '/'
+  #     end
+  #   end
 
   helpers do
   def is_logged_in?
@@ -28,7 +33,7 @@ class ApplicationController < Sinatra::Base
 
 
   def current_user
-    @current_user ||= User.find_by_id(session[:id])
+  @current_user = User.find_by_id(session[:id])
   end
 end
 
