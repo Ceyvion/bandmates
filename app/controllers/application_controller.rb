@@ -1,5 +1,6 @@
 require './config/environment'
-require 'sinatra-flash'
+
+
 
 class ApplicationController < Sinatra::Base
 
@@ -12,18 +13,25 @@ class ApplicationController < Sinatra::Base
     register Sinatra::Flash
   end
 
+
+
 #this is the default page/homescreen
   get "/" do
-    erb :index
+    erb :'welcome'
   end
 
+
+  helpers do
   def is_logged_in?
-    !!session[:id]
+    !!current_user
   end
+
 
   def current_user
-  @user = User.find(session[:id])
+    @current_user ||= User.find_by_id(session[:id])
+  end
 end
+
 
 
 end
