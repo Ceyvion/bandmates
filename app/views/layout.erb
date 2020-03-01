@@ -13,12 +13,12 @@
 
 
         <% if is_logged_in? %>
-      <p><a href="/logout">Log Out</a></p>
+        <center><p><a href="/logout">Log Out</a></p></center>
         <% else %>
         <center><p><a href='/signup'>Sign Up </a></p></center>
         <center><p><a href='/login'>Log In </a></p></center>
         <% end %>
-        <center><p><a href='/users'>View All Users </a></p></center>
+        <center><p><a href='/users/index'>View All Users </a></p></center>
         <center><p><a href='/posts'>View All Listings </a></p></center>
         <center><p><a href='/posts/new'>Create A New Listing </a></p></center>
 

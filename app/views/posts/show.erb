@@ -1,0 +1,14 @@
+<h2> <%= @post.location %> </h2>
+
+<p>Vibe: <%= @post.vibe %></p>
+<p>Description: <%= @post.description %></p>
+<p>Rating: <%= @post.skill_level %></p>
+
+<form action="/posts/<%=@post.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete This Listing">
+</form>
+
+<p><a href='/posts/<%=@post.id%>/edit'>Edit this Movie post</a></p>
+<p><a href='/posts'>See all of the posts</a></p>
+<p><a href='/logout'>Log Out</a></p>

@@ -1,12 +1,33 @@
-<center><h3>Let's get started. </h3></center>
-
-<ul>
-<% @users.each do |user| %>
- <li><a href="/users/<%=user.id%>"><%=user.username%></a></li>
+<h2> Hi <%= @user.username %>!</h2>
+<br>
+<h3>Other Musicians</h3>
+<br>
+<% @user.each do |user| %>
+  <div>
+  "Hello World"
+  </div>
 <% end %>
-</ul>
 
+<a href="/posts/new"> Need to add another listing? </a><br>
+<a href="/logout"> Log Out </a>
+<br>
+<br>
+<br>
 
+<h3>Listings Created By Other Users:</h3>
+<br>
+<% Post.all.each do |post| %>
+  <div>
+    <!-- <%if post.location != nil && post.user_id != @user.id%> -->
+      <p>Location: <%= post.location %></p>
+      <p>User: <%=User.find(post.user_id).username%></p>
+      <p>Vibe: <%= post.vibe %></p>
+      <p>Description: <%= post.description %></p>
+      <p>Skill Level: <%= post.skill_level %></p>
+      <br>
+    <!-- <%end%> -->
+  </div>
+<% end %>
 
 
 

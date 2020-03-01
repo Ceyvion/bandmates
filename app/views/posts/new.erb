@@ -1,0 +1,42 @@
+<h2>Make A New Bandcall!:</h2>
+
+<form action="/posts" method="POST">
+  <p><b>Location:</b> <input type='text' name="location"></p>
+  <p>
+    <b>Vibe?:</b>
+    <select name="vibe">
+      <option value="Indie">Indie</option>
+      <option value="Rock">Rock</option>
+      <option value="Pop">Pop</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
+      <option value="Punk">Punk</option>
+      <option value="AltRock">AltRock</option>
+      <option value="Electronic">Electronic</option>
+      <option value="Emo">Emo</option>
+      <option value="Grunge">Grunge</option>
+      <option value="Country">Country</option>
+      <option value="Metal">Metal</option>
+      <option value="Shoegaze">Shoegaze</option>
+    </select>
+  </p>
+  <p>
+    <b>Description:</b><br>
+    <textarea rows="4" cols="50" name="content"></textarea>
+  </p>
+  <p>
+    Skill Level:
+    <select name="skill" value="N/A">
+      <option value="N/A">N/A</option>
+      <option value="1">1 star</option>
+      <option value="2">2 stars</option>
+      <option value="3">3 stars</option>
+      <option value="4">4 stars</option>
+      <option value="5">5 stars</option>
+    </select>
+  </p>
+  <p><input type='submit' value='Post!'></p>
+</form>
+
+<p><a href='/logout'>Log Out</a></p>
+<p><a href='/posts/new'>Cancel</a></p>

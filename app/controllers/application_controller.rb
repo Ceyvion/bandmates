@@ -18,13 +18,13 @@ class ApplicationController < Sinatra::Base
     erb :'welcome'
   end
 
-  # get '/logout' do
-  #   if is_logged_in?
-  #     session.clear
-  #       # flash[:message] = "You have been logged out of your account."
-  #       redirect '/'
-  #     end
-  #   end
+  get '/logout' do
+    if is_logged_in?
+      session.clear
+        # flash[:message] = "You have been logged out of your account."
+        redirect '/'
+      end
+    end
 
   helpers do
   def is_logged_in?

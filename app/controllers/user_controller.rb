@@ -1,34 +1,9 @@
 class UserController < ApplicationController
 require 'pry'
-  #viewing all the users
-
-  get '/users' do
-    if is_logged_in?
-    # binding.pry
-    @users = User.all
-    erb :'/users/index'
-  end
-
-  get '/users/:id' do
-    if is_logged_in? #else
-    @user = User.find(params[:id])#find a way to only display posts belonging to current user
-    erb :'/users/show'
-    end
-  end
-
-  post '/users' do
-    # binding.pry
-    @user = User.new(params)
-    if @user.save
-      session[:id] = @user.id
-      # redirect to '/users'
-    else
-      erb :'/users/new'
-    end
-  end
+  #signup
 
   get '/signup' do
-     erb :'users/new'
+     erb :'/users/new'
   end
 
   post '/signup' do
@@ -42,8 +17,7 @@ require 'pry'
     end
   end
 
-
-#this is the login feature
+  #login
 
   get '/login' do
     if is_logged_in?
@@ -55,15 +29,50 @@ require 'pry'
   end
 
   post '/login' do
-    user = User.find_by(username: params[:username])
-  if user && user.authenticate(params[:password])
-    session[:id] = user.id
-    redirect to "/users/#{user.id}"
+    @user = User.find_by(username: params[:username])
+  if @user && @user.authenticate(params[:password])
+    session[:id] = @user.id
+    redirect to "/users/#{@user.id}"
   else
     flash[:message] = "Hmm. It looks like that's incorrect. Try again."
     redirect to '/login'
     end
   end
+
+#view users
+  get '/users/:id' do
+   if is_logged_in?
+     @user = User.find_by_id(params[:id])
+     if @user.id == session[:id]
+       erb :'users/index'
+     elsif @user.id != session[:id]
+       redirect '/users'
+     end
+   else
+     flash[:message] = "Looks like you weren't logged in yet. Please log in below."
+     redirect to '/login'
+   end
+  end
+
+  post '/users' do
+    # binding.pry
+    @user = User.new(params)
+    if @user.save
+      session[:id] = @user.id
+      # redirect to '/users'
+    else
+      erb :'/users/new'
+    end
+  end
+
+
+  get '/users' do
+    if is_logged_in?
+    # binding.pry
+    @user = User.all
+    erb :'/users/index'
+  end
+
 
 #this is the logout feature
   get '/logout' do
@@ -72,6 +81,6 @@ require 'pry'
         # flash[:message] = "You have been logged out of your account."
         redirect '/'
       end
-      end
     end
+  end
 end

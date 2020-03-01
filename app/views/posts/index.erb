@@ -1,1 +1,33 @@
-<h1>Index Hey</h1>
+<h2> Hi <%= @user.username %>!</h2>
+<br>
+<h3>Here's All Of You Listings:</h3>
+<br>
+<% @posts.each do |post| %>
+  <div>
+    <p>Location: <a href="/posts/<%=post.id%>"><%= post.location %></a></p>
+    <p>Vibe: <%= post.vibe %></p>
+    <p>Description: <%= post.description %></p>
+    <p>Skill Level: <%= post.skill_level%></p>
+  </div>
+<% end %>
+
+<a href="/posts/new"> Need to add another listing? </a><br>
+<a href="/logout"> Log Out </a>
+<br>
+<br>
+<br>
+
+<h3>Listings Created By Other Users:</h3>
+<br>
+<% Post.all.each do |post| %>
+  <div>
+    <!-- <%if post.location != nil && post.user_id != @user.id%> -->
+      <p>Location: <%= post.location %></p>
+      <p>User: <%=User.find(post.user_id).username%></p>
+      <p>Vibe: <%= post.vibe %></p>
+      <p>Description: <%= post.description %></p>
+      <p>Skill Level: <%= post.skill_level %></p>
+      <br>
+    <!-- <%end%> -->
+  </div>
+<% end %>
